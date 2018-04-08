@@ -20,7 +20,7 @@ public class TelegramEventHander implements ApplicationListener<ApplicationReady
 
     @Override
     public void onApplicationEvent(final ApplicationReadyEvent event) {
-        System.out.println("Test");
+        System.out.println("Init");
         ApiContextInitializer.init();
         TelegramBotsApi telegramBotsApi = new TelegramBotsApi();
         try {

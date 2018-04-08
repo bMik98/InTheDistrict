@@ -14,12 +14,13 @@ import java.io.InputStream;
  * Created by golizar on 24.12.17.
  */
 public class DataFlow {
+    public static final String TOKEN = "88c0537400ba41d78826ab9320b30af1";
     private final AIDataService dataService;
     private final  GcpAIDataService dataServiceVoice;
 
     public DataFlow() {
-        AIConfiguration configuration = new AIConfiguration("81c46bba0ec34d80a17c2b265ea7ccc8");
-        GcpAIConfiguration configurationGSP = new GcpAIConfiguration("81c46bba0ec34d80a17c2b265ea7ccc8");
+        AIConfiguration configuration = new AIConfiguration(TOKEN);
+        GcpAIConfiguration configurationGSP = new GcpAIConfiguration(TOKEN);
         this.dataServiceVoice = new GcpAIDataService(configurationGSP);
         this.dataService = new AIDataService(configuration);
     }
@@ -33,19 +34,16 @@ public class DataFlow {
         } catch (AIServiceException e) {
             e.printStackTrace();
         }
-
         return response;
     }
 
     public AIResponse request(InputStream voiceStream) {
-
         AIResponse response = null;
         try {
             response = dataServiceVoice.voiceRequest(voiceStream);
         } catch (AIServiceException e) {
             e.printStackTrace();
         }
-
         return response;
     }
 }
